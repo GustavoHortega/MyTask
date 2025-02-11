@@ -6,13 +6,14 @@ const path = require('path');
 
 const app = express();
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 //routers
-const tasksRouter = require('./routes/tasks');
-const testeRouter = require('./routes/teste');
+const tasksRouter = require('./routes/api/index');
 
 //routes
-app.use('/teste', testeRouter);
-app.use('/tasks', tasksRouter);
+app.use('/', tasksRouter);
 
 app.listen(process.env.SERVER_PORT, () =>{
     connect();
