@@ -21,13 +21,15 @@ router.post('/create', async(req, res) =>{
     }
 });
 
-router.get('/', async(req, res) => {
+
+//read - all
+router.get('/', async(_req, res) => {
     try {
         const tasks = await Task.find();
 
-        res.json({
+        res.render('tasks/index.ejs', {
             tasks,
-        })
+        });
         
     } catch (error) {
         
